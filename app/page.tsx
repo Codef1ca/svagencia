@@ -1,56 +1,27 @@
-import { Link } from "@heroui/link";
-import { Snippet } from "@heroui/snippet";
-import { Code } from "@heroui/code";
-import { button as buttonStyles } from "@heroui/theme";
+"use client"; // 👈 Esto hace que todo sea un Client Component
 
-import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
+import ReactFullpage from "@fullpage/react-fullpage";
 
 export default function Home() {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <div className="inline-block max-w-xl text-center justify-center">
-        <span className={title()}>Make&nbsp;</span>
-        <span className={title({ color: "violet" })}>beautiful&nbsp;</span>
-        <br />
-        <span className={title()}>
-          websites regardless of your design experience.
-        </span>
-        <div className={subtitle({ class: "mt-4" })}>
-          Beautiful, fast and modern React UI library.
-        </div>
-      </div>
-
-      <div className="flex gap-3">
-        <Link
-          isExternal
-          className={buttonStyles({
-            color: "primary",
-            radius: "full",
-            variant: "shadow",
-          })}
-          href={siteConfig.links.docs}
-        >
-          Documentation
-        </Link>
-        <Link
-          isExternal
-          className={buttonStyles({ variant: "bordered", radius: "full" })}
-          href={siteConfig.links.github}
-        >
-          <GithubIcon size={20} />
-          GitHub
-        </Link>
-      </div>
-
-      <div className="mt-8">
-        <Snippet hideCopyButton hideSymbol variant="bordered">
-          <span>
-            Get started by editing <Code color="primary">app/page.tsx</Code>
-          </span>
-        </Snippet>
-      </div>
-    </section>
+    <ReactFullpage
+      licenseKey="gplv3"
+      credits={{ enabled: true, label: "Fullpage.js", position: "right" }}
+      scrollingSpeed={1000}
+      navigation={false}
+      render={() => (
+        <ReactFullpage.Wrapper>
+          <div className="section bg-blue-200 flex items-center justify-center text-3xl">
+            Sección 1
+          </div>
+          <div className="section bg-green-200 flex items-center justify-center text-3xl">
+            Sección 2
+          </div>
+          <div className="section bg-yellow-200 flex items-center justify-center text-3xl">
+            Sección 3
+          </div>
+        </ReactFullpage.Wrapper>
+      )}
+    />
   );
 }
